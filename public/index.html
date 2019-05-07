@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Songyan Home</title>
+    </head>
+    <body>
+        {# This is a comment #}
+        <p>
+            Good morning!
+            {{ content }}
+            You are a good boy
+        </p>
+        <ul id="navigation">
+            {% for item in items%}
+                <li><a href="{{item.href}}">{{ item["caption"] }}</a></li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
