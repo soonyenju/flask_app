@@ -3,7 +3,9 @@ from jinja2 import Template
 from markdown import markdown
 
 app = Flask(__name__, template_folder = "./public")
-app.config["DEBUG"] = True
+
+# app.config["DEBUG"] = True
+app.config.from_object("settings")
 
 template = Template("Hello {{name}}")
 
