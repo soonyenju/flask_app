@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Article list
+        </title>
+    </head>
+    <body>
+        <ul>
+            {% for item in items %}
+            <li><a href="{{item.href}}">{{item.caption}}</a></li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
