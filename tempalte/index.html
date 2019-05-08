@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Songyan Home</title>
+    </head>
+    <body>
+        {# This is a comment #}
+        <p>
+            Good morning!
+            {{ content }}
+            You are a good boy
+        </p>
+        <ul id="navigation">
+            {% for item in items%}
+                <li><a href="{{item.href}}">{{ item["caption"] }}</a></li>
+            {% endfor %}
+        </ul>
+        <p>
+            <button id="start" type="button" class="btn btn-primary">click</button>
+        </p>
+        <button onclick="myFunction()">点击这里</button>
+
+        <script src="{{url_for('static', filename='scripts.js')}}"></script>
+    </body>
+</html>
