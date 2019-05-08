@@ -1,6 +1,7 @@
 from flask import Flask, request, abort, redirect, url_for, render_template
 from jinja2 import Template
 from markdown import markdown
+from pathlib import Path
 
 app = Flask(__name__, template_folder = "tempalte", static_folder = "static")
 
@@ -19,16 +20,35 @@ def hello_world():
                 "caption": "mds"
             },
             {
-                "href": "article",
+                "href": "articles",
                 "caption": "articles"
             }
         ]
     }
     return render_template("index.html", **Dict)
 
-@app.route('/article/')
+@app.route('/articles/')
 def article_list():
-    return template.render(name = "songyan")
+
+    arti_dict = {
+        "items":[
+        ]
+    }
+
+    md_paths = Path(app.static_folder).joinpath("sources").glob(r"*.md")
+    for i, p in enumerate(md_paths):
+        print(p)
+        arti_dict["items"].append({
+            "href": f"The {i} article",
+            "caption": p
+            })
+
+    # return template.render(name = "songyan")
+    return render_template("articles.html", **arti_dict)
+
+@app.route("/articles/<id>")
+def article(id):
+    return f"{id}"
 
 @app.route('/md/')
 def parse_md():
