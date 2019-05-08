@@ -2,7 +2,7 @@ from flask import Flask, request, abort, redirect, url_for, render_template
 from jinja2 import Template
 from markdown import markdown
 
-app = Flask(__name__, template_folder = "./public")
+app = Flask(__name__, template_folder = "tempalte", static_folder = "static")
 
 # app.config["DEBUG"] = True
 app.config.from_object("settings")
@@ -12,18 +12,22 @@ template = Template("Hello {{name}}")
 @app.route('/')
 def hello_world():
     Dict = {
-        "content": "jojo",
+        "content": "Songyan",
         "items": [
             {
-                "href": "baidu",
-                "caption": "search engine"
+                "href": "md",
+                "caption": "mds"
+            },
+            {
+                "href": "article",
+                "caption": "articles"
             }
         ]
     }
     return render_template("index.html", **Dict)
 
-@app.route('/code/')
-def mycode():
+@app.route('/article/')
+def article_list():
     return template.render(name = "songyan")
 
 @app.route('/md/')
